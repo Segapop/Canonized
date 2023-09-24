@@ -22,7 +22,7 @@ public class DancerAbility extends Ability implements IIdleAbility {
 
     @Override
     public void execute() {
-        // Will spin in circles and generate XP if music is playing
+        // Will spin in circles and generate XP if music is playing,
 
     }
 }
