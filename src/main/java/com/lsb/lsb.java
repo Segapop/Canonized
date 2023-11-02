@@ -3,10 +3,13 @@ package com.lsb;
 import com.lsb.entity.entities.*;
 import com.lsb.init.AddonAbilities;
 import com.lsb.init.AddonEntities;
+import com.lsb.init.AddonItems;
 import com.lsb.init.RegistryHandler;
 import com.gempire.init.EventHandler;
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -44,7 +47,7 @@ public class lsb
     public void EntityAttributes(final EntityAttributeCreationEvent event) {
         //register entity attributes, these are set in the EntityTestGem class
         event.put(AddonEntities.SBJADE.get(), EntitySbJade.registerAttributes().build());
-        event.put(AddonEntities.SBPENTAGONITE.get(), EntitySbJade.registerAttributes().build());
+        event.put(AddonEntities.SBPENTAGONITE.get(), EntitySbPentagonite.registerAttributes().build());
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
@@ -53,4 +56,5 @@ public class lsb
         AddonEntities.registerCruxes();
         AddonAbilities.registerAbilities();
     }
+
 }

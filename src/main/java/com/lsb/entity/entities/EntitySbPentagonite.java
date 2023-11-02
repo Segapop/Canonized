@@ -9,6 +9,7 @@ import com.gempire.entities.other.EntityCrawler;
 import com.gempire.entities.other.EntityShambler;
 import com.gempire.util.GemPlacements;
 import com.lsb.entity.abilities.DancerAbility;
+import com.lsb.entity.abilities.SharpshooterAbility;
 import com.lsb.init.AddonItems;
 import com.lsb.lsb;
 import net.minecraft.sounds.SoundEvent;
@@ -37,8 +38,8 @@ public class EntitySbPentagonite extends EntityGem {
     public static AttributeSupplier.Builder registerAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 25.0D)
-                .add(Attributes.MOVEMENT_SPEED, 0.3D)
-                .add(Attributes.ATTACK_DAMAGE, 3.0D)
+                .add(Attributes.MOVEMENT_SPEED, 0.35D)
+                .add(Attributes.ATTACK_DAMAGE, 4.0D)
                 .add(Attributes.ATTACK_SPEED, 1.0D);
     }
 
@@ -102,23 +103,42 @@ public class EntitySbPentagonite extends EntityGem {
     }
 
     @Override
+    public boolean hasMarkings() {
+        return true;
+    }
+
+    @Override
+    public boolean hasMarkings2() {
+        return false;
+    }
+
+    @Override
+    public int maxMarkings() {
+        return 1;
+    }
+
+    @Override
+    public int maxMarkings2() {
+        return 0;
+    }
+
+    @Override
     public GemPlacements[] getPlacements() {
         return new GemPlacements[]{
-                GemPlacements.TOP_OF_HEAD, GemPlacements.FOREHEAD, GemPlacements.BACK_OF_HEAD, GemPlacements.LEFT_EYE, GemPlacements.RIGHT_EYE, GemPlacements.NOSE,
-                GemPlacements.LEFT_CHEEK, GemPlacements.RIGHT_CHEEK, GemPlacements.LEFT_EAR, GemPlacements.RIGHT_EAR, GemPlacements.CHEST, GemPlacements.BACK, GemPlacements.BELLY,
-                GemPlacements.LEFT_SHOULDER, GemPlacements.RIGHT_SHOULDER, GemPlacements.LEFT_HAND, GemPlacements.RIGHT_HAND, GemPlacements.LEFT_PALM, GemPlacements.RIGHT_PALM,
-                GemPlacements.LEFT_THIGH, GemPlacements.RIGHT_THIGH, GemPlacements.LEFT_ANKLE, GemPlacements.RIGHT_ANKLE
+                GemPlacements.TOP_OF_HEAD, GemPlacements.FOREHEAD, GemPlacements.BACK_OF_HEAD, GemPlacements.LEFT_EYE, GemPlacements.RIGHT_EYE,
+                GemPlacements.LEFT_EAR, GemPlacements.RIGHT_EAR, GemPlacements.CHEST, GemPlacements.BACK, GemPlacements.BELLY,
+                GemPlacements.LEFT_SHOULDER, GemPlacements.RIGHT_SHOULDER, GemPlacements.LEFT_HAND, GemPlacements.RIGHT_HAND
         };
     }
 
     @Override
     public SoundEvent getInstrument()
     {
-        return SoundEvents.NOTE_BLOCK_PLING.get();
+        return SoundEvents.NOTE_BLOCK_BIT.get();
     }
     @Override
     public int generateHairVariant() {
-        return this.random.nextInt(10);
+        return this.random.nextInt(5);
     }
 
     @Override
@@ -128,7 +148,7 @@ public class EntitySbPentagonite extends EntityGem {
 
     @Override
     public int generateOutfitColor() {
-        return 11;
+        return 9;
     }
 
     @Override
@@ -145,17 +165,15 @@ public class EntitySbPentagonite extends EntityGem {
     public ArrayList<Ability> possibleAbilities(){
         ArrayList<Ability> arrayList = new ArrayList<>();
         arrayList.add(new AbilityZilch());
-        arrayList.add(new AbilityTank());
-        arrayList.add(new AbilityCryokinesis());
-        arrayList.add(new AbilityPowerhouse());
-        arrayList.add(new AbilityUnhinged());
         arrayList.add(new AbilityKnockback());
-        arrayList.add(new AbilityHydrokinesis());
+        arrayList.add(new AbilityBeefcake());
+        arrayList.add(new AbilityPowerhouse());
+
         return arrayList;
     }
     public ArrayList<Ability> definiteAbilities(){
         ArrayList<Ability> arrayList = new ArrayList<>();
-        arrayList.add(new DancerAbility());
+        arrayList.add(new SharpshooterAbility());
         return arrayList;
     }
 

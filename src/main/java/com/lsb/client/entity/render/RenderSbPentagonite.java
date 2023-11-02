@@ -1,7 +1,8 @@
 package com.lsb.client.entity.render;
 
-import com.gempire.client.entity.model.ModelNephrite;
 import com.gempire.client.entity.render.layers.*;
+import com.lsb.client.entity.model.ModelSbPentagonite;
+import com.lsb.client.entity.render.layers.HelmLayer;
 import com.lsb.entity.entities.EntitySbPentagonite;
 import com.lsb.lsb;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -12,16 +13,18 @@ import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
-public class RenderSbPentagonite extends MobRenderer<EntitySbPentagonite, ModelNephrite<EntitySbPentagonite>> {
+public class RenderSbPentagonite extends MobRenderer<EntitySbPentagonite, ModelSbPentagonite<EntitySbPentagonite>> {
 
-    public RenderSbPentagonite(EntityRendererProvider.Context renderManagerIn, ModelNephrite<EntitySbPentagonite> baseModel) {
+    public RenderSbPentagonite(EntityRendererProvider.Context renderManagerIn, ModelSbPentagonite<EntitySbPentagonite> baseModel) {
         super(renderManagerIn, baseModel, .25f);
         this.addLayer(new SkinLayer(this));
+        this.addLayer(new MarkingLayer(this));
         this.addLayer(new FaceLayer(this));
         this.addLayer(new OutfitLayer(this));
         this.addLayer(new InsigniaLayer(this));
         this.addLayer(new HairLayer(this));
         this.addLayer(new VisorLayer(this));
+        this.addLayer(new HelmLayer(this));
         this.addLayer(new GemPlacementLayer(this));
         this.addLayer(new ItemInHandLayer(this, renderManagerIn.getItemInHandRenderer()));
     }

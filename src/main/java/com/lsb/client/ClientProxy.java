@@ -24,7 +24,7 @@ public class ClientProxy {
         @SubscribeEvent
         public static void onClientSetup(EntityRenderersEvent.RegisterRenderers event) {
             event.registerEntityRenderer(AddonEntities.SBJADE.get(), m -> new RenderSbJade(m, new ModelSbJade<>(m.bakeLayer(ModelSbJade.LAYER_LOCATION))));
-            event.registerEntityRenderer(AddonEntities.SBPENTAGONITE.get(), m -> new RenderSbPentagonite(m, new ModelNephrite<>(m.bakeLayer(ModelNephrite.LAYER_LOCATION))));
+            event.registerEntityRenderer(AddonEntities.SBPENTAGONITE.get(), m -> new RenderSbPentagonite(m, new ModelSbPentagonite<>(m.bakeLayer(ModelSbPentagonite.LAYER_LOCATION))));
         }
 
         @SubscribeEvent
@@ -36,7 +36,7 @@ public class ClientProxy {
         public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
             //register layers here
             event.registerLayerDefinition(ModelSbJade.LAYER_LOCATION, ModelSbJade::createBodyLayer);
-            //event.registerLayerDefinition(ModelSbPentagonite.LAYER_LOCATION, ModelSbPentagonite::createBodyLayer);
+            event.registerLayerDefinition(ModelSbPentagonite.LAYER_LOCATION, ModelSbPentagonite::createBodyLayer);
         }
 
     }
